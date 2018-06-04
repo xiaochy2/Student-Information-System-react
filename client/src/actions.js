@@ -6,7 +6,7 @@ export const log = info => dispatch => {
             res => {  
                 dispatch({
                     type: 'LOAD_COMPLETE',
-                    message: res.data.message
+                    data: res.data
                 });
             }
         )
@@ -14,7 +14,7 @@ export const log = info => dispatch => {
             err => {
                 dispatch({
                     type: 'SERVER_ERROR',
-                    error: "Cannot connect to the server"
+                    error: err.toString()
                 });
             }
         )

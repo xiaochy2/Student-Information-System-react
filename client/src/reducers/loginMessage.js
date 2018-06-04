@@ -6,11 +6,11 @@ const loginMessage = (state = initialState, action) => {
             return "Loading...";
         case 'SERVER_ERROR':
             return action.error;
-        case 'LOAD_COMPLETE':;
-            if(action.message){
-                return "Success!"
+        case 'LOAD_COMPLETE':
+            if(action.data.message){
+                return "Success!";
             }else{
-                return "Invalid username/password"
+                return "Invalid username/password";
             }
         default:
             return state;

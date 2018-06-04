@@ -1,16 +1,32 @@
 import React from 'react';
-import { log } from '../../actions';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { Form, FormGroup, Col, ControlLabel, FormControl, Button } from "react-bootstrap";
+import { Redirect,BrowserRouter,Switch,Route } from 'react-router-dom';
+import Bar from './Bar';
+import ViewMark from './ViewMark';
+import UpdateMark from './UpdateMark';
+import UpdateUser from './UpdateUser';
+
 
 class HomePage extends React.Component {
-    render(){
-        console.log(this.props);
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         username: this.props.location.state.username
+    //     }
+    // }
+    render() {
+        if (this.props.location.state === undefined) {
+            return <Redirect to={{ pathname: '/' }} />;
+        }
         return (<div>
-            <h1>{this.props.location.state.username}</h1>
-        </div>
-
+            <Bar username={this.props.location.state.username} role={this.props.location.state.role} />
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path="/viewMark" component={ViewMark} />
+                    <Route exact path="/updateMark" component={UpdateMark} />
+                    <Route exact path="/updateUser" component={UpdateUser} />
+                </Switch>
+            </BrowserRouter>
+            </div>
         )
     }
 }

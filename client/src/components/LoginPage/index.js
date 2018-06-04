@@ -25,7 +25,7 @@ class LoginPage extends React.Component {
     }
     render() {
         if (this.props.loginMessage === "Success!") {
-            return <Redirect to={{ pathname: '/home', state: { username: this.state.username, role: 0 } }} />;
+            return <Redirect to={{ pathname: '/home', state: { username: this.state.username, role: this.props.role } }} />;
         }
         return (
             <Col md={4} mdOffset={4}>
@@ -62,7 +62,7 @@ class LoginPage extends React.Component {
 const mapstateToProps = state => {
     return {
         loginMessage: state.loginMessage,
-        // count: state.count,
+        role: state.role,
         loginError: state.loginError,
         isLoading: state.isLoading
     }
