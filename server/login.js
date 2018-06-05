@@ -1,6 +1,6 @@
 const express    = require('express');        
 const login = express.Router(); 
-const User = require('./user');
+const User = require('./DBSchemal/user');
 
 login.post('/login', (req, res) => {
     User.findOne({ username: req.body.username,password:req.body.password},function(err,user){

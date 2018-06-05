@@ -7,6 +7,9 @@ const isLoading = (state = initialState, action) => {
         case 'SERVER_ERROR':
             return false;
         case 'LOAD_COMPLETE':
+
+            return false;
+        case 'GET':
             return false;
         default:
             return state;
