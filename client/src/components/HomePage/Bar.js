@@ -1,7 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Navbar, Nav, NavItem ,NavDropdown, MenuItem} from "react-bootstrap";
+import {goToPage} from '../../actions';
+
 
 class Bar extends React.Component {
+    constructor(props){
+        super(props);
+        this.changeTag = this.changeTag.bind(this); 
+    }
+    changeTag(num){
+        // console.log(num);
+        this.props.goToPage(num);
+    }
     render() {
         return (
             <Navbar inverse collapseOnSelect>
@@ -13,14 +24,14 @@ class Bar extends React.Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-                        <NavItem eventKey={1} href="#">
+                        <NavItem eventKey={1} onClick = {()=>this.changeTag(1)}>
                             View Mark
                     </NavItem>
                         {
-                            this.props.role > 0 ? <NavItem eventKey={2} href="#">Update Mark</NavItem> : ""
+                            this.props.role > 0 ? <NavItem eventKey={2} onClick = {()=>this.changeTag(2)}>Update Mark</NavItem> : ""
                         }
                         {
-                            this.props.role > 1 ? <NavItem eventKey={3} href="#">Update Users</NavItem> : ""
+                            this.props.role > 1 ? <NavItem eventKey={3} onClick = {()=>this.changeTag(3)}>Update Users</NavItem> : ""
                         }
                     </Nav>
                     <Nav pullRight>
@@ -43,4 +54,16 @@ class Bar extends React.Component {
     }
 }
 
-export default Bar;
+
+// const mapstateToProps = state => {
+//     return {
+//         pageRender: state.pageRender,
+//     }
+// }
+function mapDispatchToProps(dispatch) {
+    return ({
+        goToPage: (num) => dispatch(goToPage(num))
+    })
+};
+
+export default connect(null, mapDispatchToProps)(Bar);

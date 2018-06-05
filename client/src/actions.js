@@ -19,3 +19,8 @@ export const log = info => dispatch => {
             }
         )
 }
+
+export const goToPage = num => ({
+    type: 'CHANGE_PAGE',
+    pageRender : num
+})
