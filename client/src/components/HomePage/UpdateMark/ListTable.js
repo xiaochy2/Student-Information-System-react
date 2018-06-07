@@ -12,13 +12,15 @@ class ListTable extends React.Component {
     }
 
     render() {
-        
+        console.log(this.props.dataList);
         let count = 0;
         let min = (this.props.page_num - 1) * 5;
         let max = this.props.page_num * 5;
         return (<Col><Table striped condensed hover>
             <thead>
                 <tr>
+                    <th className="text-center">Edit</th>
+                    <th className="text-center">Delete</th>
                     <th className="text-center"><Button bsStyle="default" onClick={() => this.sort("username")}>username</Button></th>
                     <th className="text-center"><Button bsStyle="default" onClick={() => this.sort("english")}>English</Button></th>
                     <th className="text-center"><Button bsStyle="default" onClick={() => this.sort("math")}>Math</Button></th>

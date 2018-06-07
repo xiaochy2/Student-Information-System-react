@@ -5,6 +5,8 @@ import Bar from './Bar';
 import ViewMark from './ViewMark';
 import UpdateMark from './UpdateMark';
 import UpdateUser from './UpdateUser';
+import Create from './UpdateMark/Create';
+import Edit from './UpdateMark/Edit';
 
 function Condition(props) {
     if (props.pageRender === 1) {
@@ -13,16 +15,14 @@ function Condition(props) {
         return <UpdateMark />;
     } else if (props.pageRender === 3) {
         return <UpdateUser />;
+    } else if (props.pageRender === 4) {
+        return <Create />;
+    } else if (props.pageRender === 5) {
+        return <Edit />;
     }
 }
 
 class HomePage extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         username: this.props.location.state.username
-    //     }
-    // }
     render() {
         if (this.props.location.state === undefined) {
             return <Redirect to={{ pathname: '/' }} />;
@@ -40,13 +40,6 @@ const mapstateToProps = state => {
         pageRender: state.pageRender,
     }
 }
-// function mapDispatchToProps(dispatch) {
-//     return ({
-//         log: (info) => {
-//             dispatch({ type: 'ITEMS_IS_LOADING' });
-//             dispatch(log(info));
-//         }
-//     })
-// };
+
 
 export default connect(mapstateToProps)(HomePage);

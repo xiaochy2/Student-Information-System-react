@@ -64,3 +64,47 @@ export const next = () => ({
 export const prev = () => ({
     type: 'PREV',
 })
+
+export const editing = singleMark => ({
+    type: 'EDITING',
+    data: singleMark
+})
+
+export const del = id => dispatch => {
+    // console.log("delete " + id);
+    axios.delete('api/marks/' + id)
+        .then(res => dispatch({
+            type: 'DELETE',
+            message: res.data.message
+        })
+        )
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+export const update = singleData => dispatch => {
+    // console.log("update");
+    axios.put('api/marks/' + singleData._id, singleData)
+        .then(res => dispatch({
+            type: 'UPDATE',
+            message: res.data.message
+        })
+        )
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+export const create = singleData => dispatch => {
+    // console.log("add " + singalData.firstname);
+    axios.post('api/marks', singleData)
+        .then(res => dispatch({
+            type: 'ADD',
+            message: res.data.message
+        })
+        )
+        .catch(err => {
+            console.log(err);
+        })
+}

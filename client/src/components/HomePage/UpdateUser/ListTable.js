@@ -12,7 +12,6 @@ class ListTable extends React.Component {
     }
 
     render() {
-        
         let count = 0;
         let min = (this.props.page_num - 1) * 5;
         let max = this.props.page_num * 5;
@@ -28,10 +27,8 @@ class ListTable extends React.Component {
             <tbody>
                 {
                     this.props.dataList.map((item) => {
-                        
                         count++;
                         if (count > min && count <= max) {
-
                             return <SingleList info={item} key={count} />
                         } else{
                             return ""

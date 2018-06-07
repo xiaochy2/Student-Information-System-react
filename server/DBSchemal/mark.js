@@ -5,8 +5,8 @@ const markSchema   = new Schema({
     stuId: Object,
     username:String,
     English: Number,
-    Eath:Number,
-    Ehysics:Number
+    Math:Number,
+    Physics:Number
 },{collection:'mark'});
 
 module.exports = mongoose.model('Mark', markSchema);

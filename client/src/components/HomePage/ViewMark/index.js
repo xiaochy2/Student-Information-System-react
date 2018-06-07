@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getInfo } from '../../../actions';
 import Search from './Search';
-import { Grid, Col, Row, Button } from "react-bootstrap";
+import { Grid, Col, Row,} from "react-bootstrap";
 import ListTable from './ListTable';
 
 class ViewMark extends React.Component {
     componentDidMount() {
+        // console.log("GET");
         this.props.getInfo();
     }
     render() {
@@ -26,7 +27,7 @@ class ViewMark extends React.Component {
             <Row>
                 <Col md={2}></Col>
                 <Col md={6} mdOffset={1}>
-                    <ListTable dataList={this.props.dataList}/>
+                    <ListTable />
                 </Col>
                 <Col md={2}></Col>
             </Row>
@@ -37,7 +38,6 @@ class ViewMark extends React.Component {
 
 const mapstateToProps = state => {
     return {
-        dataList: state.dataList,
         isLoading: state.isLoading,
     }
 }
