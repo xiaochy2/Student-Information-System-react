@@ -1,6 +1,6 @@
 # Student-Manager-System
 
-username  |  possword  |            authority
+username  |  password  |            authority
 ----------|------------|---------------------------------
    stu1   |   student  |            view marks
    tea1   |   teacher  |        view、update marks
