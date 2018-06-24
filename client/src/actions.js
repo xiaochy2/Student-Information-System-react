@@ -158,7 +158,8 @@ export const updateUser = singleData => dispatch => {
     axios.put('api/users/' + singleData._id, singleData)
         .then(res => dispatch({
             type: 'UPDATEUSER',
-            message: res.data.message
+            message: res.data.message,
+            error : res.data.error
         })
         )
         .catch(err => {

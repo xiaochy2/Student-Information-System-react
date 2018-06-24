@@ -19,7 +19,7 @@ class EditUser extends React.Component {
         event.preventDefault();
         this.props.updateUser(this.state);
 
-    } 
+    }
 
     handleChange(event) {
         this.setState({
@@ -27,26 +27,26 @@ class EditUser extends React.Component {
         });
     }
     render() {
-        if(this.props.jumpMessage){
+        if (this.props.jumpMessage) {
             this.props.goToPage();
             return null;
-        }else{
+        } else {
             return (
                 <Row>
                     <Col md={4}></Col>
                     <Col md={4}>
-                    <Form horizontal onSubmit={this.handleSubmit}>
+                        <Form horizontal onSubmit={this.handleSubmit}>
                             <FormGroup>
                                 <ControlLabel>username</ControlLabel>
                                 <FormControl name="username" type="text" maxLength="10" required="required" value={this.state.username} onChange={this.handleChange} />
                             </FormGroup>
                             <FormGroup>
                                 <ControlLabel>password</ControlLabel>
-                                <FormControl name="password" type="text" maxLength="10" required="required" value={this.state.password} onChange={this.handleChange} />
+                                <FormControl name="password" type="password" maxLength="10" required="required" value={this.state.password} onChange={this.handleChange} />
                             </FormGroup>
                             <FormGroup>
                                 <ControlLabel>repeat</ControlLabel>
-                                <FormControl name="password_re" type="text" maxLength="10" required="required" value={this.state.password_re} onChange={this.handleChange} />
+                                <FormControl name="password_re" type="password" maxLength="10" required="required" value={this.state.password_re} onChange={this.handleChange} />
                             </FormGroup>
                             <FormGroup>
                                 <ControlLabel>Role</ControlLabel>
@@ -54,11 +54,12 @@ class EditUser extends React.Component {
                                     <option value="">Select</option>
                                     <option value="0">Student</option>
                                     <option value="1">Teacher</option>
-                                    
+
                                 </FormControl>
                             </FormGroup>
                             <FormGroup>
-                                <Button type="submit" bsStyle="success" disabled={this.props.isLoading||(this.state.password_re!==this.state.password)}>Edit</Button>
+                                <p>{this.props.markError}</p>
+                                <Button type="submit" bsStyle="success" disabled={this.props.isLoading || (this.state.password_re !== this.state.password)}>Edit</Button>
                             </FormGroup>
                         </Form>
                     </Col>
@@ -66,15 +67,16 @@ class EditUser extends React.Component {
                 </Row>
             );
         }
-        
+
     }
 }
 
 const mapstateToProps = state => {
     return {
         isLoading: state.isLoading,
-        singleUser:state.singleUser,
-        jumpMessage:state.jumpMessage
+        singleUser: state.singleUser,
+        jumpMessage: state.jumpMessage,
+        markError: state.markError
     }
 }
 

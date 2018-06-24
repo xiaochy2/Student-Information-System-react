@@ -42,11 +42,11 @@ class CreateUser extends React.Component {
                             </FormGroup>
                             <FormGroup>
                                 <ControlLabel>password</ControlLabel>
-                                <FormControl name="password" type="text" maxLength="10" required="required" value={this.state.password} onChange={this.handleChange} />
+                                <FormControl name="password" type="password" maxLength="10" required="required" value={this.state.password} onChange={this.handleChange} />
                             </FormGroup>
                             <FormGroup>
                                 <ControlLabel>repeat</ControlLabel>
-                                <FormControl name="password_re" type="text" maxLength="10" required="required" value={this.state.password_re} onChange={this.handleChange} />
+                                <FormControl name="password_re" type="password" maxLength="10" required="required" value={this.state.password_re} onChange={this.handleChange} />
                             </FormGroup>
                             <FormGroup>
                                 <ControlLabel>Role</ControlLabel>
@@ -58,6 +58,7 @@ class CreateUser extends React.Component {
                                 </FormControl>
                             </FormGroup>
                             <FormGroup>
+                                <p>{this.props.markError}</p>
                                 <Button type="submit" bsStyle="success" disabled={this.props.isLoading||(this.state.password_re!==this.state.password)}>create</Button>
                             </FormGroup>
                         </Form>
@@ -73,7 +74,7 @@ class CreateUser extends React.Component {
 const mapstateToProps = state => {
     return {
         isLoading: state.isLoading,
-        
+        markError: state.markError,
         jumpMessage: state.jumpMessage
     }
 }
