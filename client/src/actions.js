@@ -75,7 +75,7 @@ export const del = id => dispatch => {
     axios.delete('api/marks/' + id)
         .then(res => dispatch({
             type: 'DELETE',
-            message: res.data.message
+            data: res.data
         })
         )
         .catch(err => {
@@ -101,6 +101,63 @@ export const create = singleData => dispatch => {
     axios.post('api/marks', singleData)
         .then(res => dispatch({
             type: 'ADD',
+            message: res.data.message,
+            error:res.data.error
+        })
+        )
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+export const searchUser = text => dispatch => {
+    axios.get('api/users/' + text)
+        .then(res => dispatch({
+            type: 'SEARCHUSER',
+            data: res.data
+        })
+        )
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+export const sortUser = tag => ({
+    type: 'SORTUSER',
+    sortBy: tag
+})
+
+export const getUser = () => dispatch => {
+    // console.log("get");
+    axios.get('api/users')
+        .then(res => dispatch({
+            type: 'GETUSER',
+            data: res.data
+        })
+        )
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+export const delUser = id => dispatch => {
+    // console.log("delete " + id);
+    axios.delete('api/users/' + id)
+        .then(res => dispatch({
+            type: 'DELETEUSER',
+            data: res.data
+        })
+        )
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+export const updateUser = singleData => dispatch => {
+    // console.log("update");
+    axios.put('api/users/' + singleData._id, singleData)
+        .then(res => dispatch({
+            type: 'UPDATEUSER',
             message: res.data.message
         })
         )
@@ -108,3 +165,22 @@ export const create = singleData => dispatch => {
             console.log(err);
         })
 }
+
+export const createUser = singleData => dispatch => {
+    console.log(singleData);
+    axios.post('api/users', singleData)
+        .then(res => dispatch({
+            type: 'ADDUSER',
+            message: res.data.message,
+            error : res.data.error
+        })
+        )
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+export const editingUser = singleUser => ({
+    type: 'EDITINGUSER',
+    data: singleUser
+})

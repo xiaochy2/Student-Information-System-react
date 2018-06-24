@@ -16,13 +16,6 @@ class SingleList extends React.Component {
     render() {
         
             return (<tr>
-                <td width="10%">
-                    <Button bsStyle="warning" onClick={() => this.editing()} disabled={this.props.isLoading}>Edit</Button>
-                </td>
-                <td width="10%">
-                    <Button onClick={() => this.del()} bsStyle="danger" disabled={this.props.isLoading}>Delete</Button>
-                </td>
-
                 <td className="text-center" width="25%">
                     {this.props.info.username}
                 </td>
@@ -34,6 +27,12 @@ class SingleList extends React.Component {
                 </td>
                 <td className="text-center" width="25%">
                     {this.props.info.Physics}
+                </td>
+                <td width="10%">
+                    <Button bsStyle="warning" onClick={() => this.editing()} disabled={this.props.isLoading}>Edit</Button>
+                </td>
+                <td width="10%">
+                    <Button onClick={() => this.del()} bsStyle="danger" disabled={this.props.isLoading}>Delete</Button>
                 </td>
             </tr>)
         

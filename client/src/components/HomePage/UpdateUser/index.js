@@ -1,17 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getInfo } from '../../../actions';
+import { getUser,goToPage } from '../../../actions';
 import Search from './Search';
-import { Grid, Col, Row,} from "react-bootstrap";
+import { Grid, Col, Row, Button } from "react-bootstrap";
 import ListTable from './ListTable';
+
 
 class UpdateUser extends React.Component {
     componentDidMount() {
         // console.log("GET");
-        this.props.getInfo();
+        this.props.getUser();
+    }
+    goToPage = () =>{
+        this.props.goToPage(6);
     }
     render() {
-        if(this.props.isLoading){
+        if (this.props.isLoading) {
             return (
                 <div>loading...</div>
             )
@@ -31,6 +35,12 @@ class UpdateUser extends React.Component {
                 </Col>
                 <Col md={2}></Col>
             </Row>
+
+            <Row>
+                <Col md={4} mdOffset={5}>
+                    <Button bsStyle="success" onClick={() => this.goToPage()}>Create New User</Button>
+                </Col>
+            </Row>
         </Grid>);
     }
 }
@@ -44,10 +54,11 @@ const mapstateToProps = state => {
 
 function mapdispatchToProps(dispatch) {
     return ({
-        getInfo: () => {
+        getUser: () => {
             dispatch({ type: 'ITEMS_IS_LOADING' });
-            dispatch(getInfo());
-        }
+            dispatch(getUser());
+        },
+        goToPage: (num) => dispatch(goToPage(num))
     })
 }
 

@@ -3,12 +3,12 @@ import SingleList from './SingleList';
 import Page from './Page';
 import { connect } from 'react-redux';
 import { Table, Col, Button } from "react-bootstrap";
-import { sort } from '../../../actions';
+import { sortUser } from '../../../actions';
 
 
 class ListTable extends React.Component {
-    sort = (tag) => {
-        this.props.sort(tag);
+    sortUser = (tag) => {
+        this.props.sortUser(tag);
     }
 
     render() {
@@ -18,15 +18,15 @@ class ListTable extends React.Component {
         return (<Col><Table striped condensed hover>
             <thead>
                 <tr>
-                    <th className="text-center"><Button bsStyle="default" onClick={() => this.sort("username")}>username</Button></th>
-                    <th className="text-center"><Button bsStyle="default" onClick={() => this.sort("english")}>English</Button></th>
-                    <th className="text-center"><Button bsStyle="default" onClick={() => this.sort("math")}>Math</Button></th>
-                    <th className="text-center"><Button bsStyle="default" onClick={() => this.sort("physics")}>Physics</Button></th>
+                    <th className="text-center"><Button bsStyle="default" onClick={() => this.sortUser("username")}>username</Button></th>
+                    <th className="text-center"><Button bsStyle="default" onClick={() => this.sortUser("role")}>role</Button></th>
+                    <th className="text-center">Edit</th>
+                    <th className="text-center">Delete</th>
                 </tr>
             </thead>
             <tbody>
                 {
-                    this.props.dataList.map((item) => {
+                    this.props.userList.map((item) => {
                         count++;
                         if (count > min && count <= max) {
                             return <SingleList info={item} key={count} />
@@ -37,7 +37,7 @@ class ListTable extends React.Component {
                 }
             </tbody>
         </Table>
-            <Page page_num={this.props.page_num} length={this.props.dataList.length} />
+            <Page page_num={this.props.page_num} length={this.props.userList.length} />
 
         </Col>);
     }
@@ -45,14 +45,14 @@ class ListTable extends React.Component {
 
 const mapstateToProps = state => {
     return {
-        dataList: state.dataList,
+        userList: state.userList,
         page_num: state.page_num
     }
 }
 
 function mapdispatchToProps(dispatch) {
     return ({
-        sort: (tag) => dispatch(sort(tag))
+        sortUser: (tag) => dispatch(sortUser(tag))
     })
 }
 

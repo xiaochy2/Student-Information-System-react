@@ -51,33 +51,55 @@ router.delete('/marks/:id', (req, res) => {
         if (err) {
             res.send(err);
         }
-        res.json({ message: true });
-
+        Mark.find((err, marks) => {
+            if (err) {
+                res.send(err);
+            }
+            res.json({ marks, message: true });
+        });
     });
 });
 
 router.post('/marks', (req, res) => {
-    // console.log(req.body);   
+    // console.log(req.body);  
+
     User.findOne({ username: req.body.username }, function (err, user) {
         if (err) {
             res.send(err);
         }
-        // console.log(user); 
-        var mark = new Mark();
-        mark.username = user.username;
-        mark.stuId = user._id;
-        mark.English = req.body.English;
-        mark.Math = req.body.Math;
-        mark.Physics = req.body.Physics;
-        mark.save(err => {
-            if (err) {
-                res.send(err);
-            };
-            res.json({ message: true });
-        });
+        if (user === null||user.role!==0) {
+            // console.log(user);
+            res.json({ message: false, error: "student not found" });
+        } else {
+
+            Mark.find({ username: req.body.username }, function (err, mark) {
+                if (err) {
+                    res.send(err);
+                }
+                if (mark.length>0) {
+                    res.json({ message: false, error: "mark exists" });
+                } else {
+                    var mark = new Mark();
+                    mark.username = user.username;
+                    mark.stuId = user._id;
+                    mark.English = req.body.English;
+                    mark.Math = req.body.Math;
+                    mark.Physics = req.body.Physics;
+                    mark.save(err => {
+                        if (err) {
+                            res.send(err);
+                        };
+                        res.json({ message: true, error: "" });
+                    });
+                }
+            })
+
+
+        }
+
     })
 
-    
+
 
 });
 

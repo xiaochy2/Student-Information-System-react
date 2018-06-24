@@ -54,7 +54,7 @@ class Create extends React.Component {
                                 <FormControl name="Physics" type="number" min="0" max="100" value={this.state.Physics} onChange={this.handleChange} />
                             </FormGroup>
                             <FormGroup>
-    
+                            <p>{this.props.markError}</p>
                                 <Button type="submit" bsStyle="success" disabled={this.props.isLoading}>create</Button>
     
     
@@ -73,7 +73,7 @@ class Create extends React.Component {
 const mapstateToProps = state => {
     return {
         isLoading: state.isLoading,
-        singleMark:state.singleMark,
+        markError: state.markError,
         jumpMessage:state.jumpMessage
     }
 }

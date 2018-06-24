@@ -7,6 +7,8 @@ import UpdateMark from './UpdateMark';
 import UpdateUser from './UpdateUser';
 import Create from './UpdateMark/Create';
 import Edit from './UpdateMark/Edit';
+import CreateUser from './UpdateUser/Create';
+import EditUser from './UpdateUser/Edit';
 
 function Condition(props) {
     if (props.pageRender === 1) {
@@ -19,7 +21,11 @@ function Condition(props) {
         return <Create />;
     } else if (props.pageRender === 5) {
         return <Edit />;
-    }
+    } else if (props.pageRender === 6) {
+        return <CreateUser />;
+    } else if (props.pageRender === 7) {
+        return <EditUser />;
+    } 
 }
 
 class HomePage extends React.Component {

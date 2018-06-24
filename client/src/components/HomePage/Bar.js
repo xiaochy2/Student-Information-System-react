@@ -18,7 +18,7 @@ class Bar extends React.Component {
             <Navbar inverse collapseOnSelect>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <a href="#brand">SMSYSTEM</a>
+                        <a>SMSYSTEM</a>
                     </Navbar.Brand>
                     <Navbar.Toggle />
                 </Navbar.Header>
@@ -36,7 +36,7 @@ class Bar extends React.Component {
                     </Nav>
                     <Nav pullRight>
                         <NavItem eventKey={1} href="#">
-                            Welcome! You are {this.props.role > 0 ? (this.props.role > 1 ? "manager" : "teacher") : "student"}
+                            Welcome! You are {this.props.role > 0 ? (this.props.role > 1 ? "admin" : "teacher") : "student"}
                         </NavItem>
                         <NavDropdown eventKey={2} title={this.props.username} id="basic-nav-dropdown">
                             <MenuItem eventKey={3.1} href="/">logout</MenuItem>

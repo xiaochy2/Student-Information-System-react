@@ -5,6 +5,8 @@ const dataList = (state = initialState, action) => {
         case 'SEARCH':
         case 'GET':
             return action.data;
+        case 'DELETE':
+            return action.data.marks;
         case 'SORT':
             switch (action.sortBy) {
                 case "username": return [...state.sort((a, b) => a.username.localeCompare(b.username))];

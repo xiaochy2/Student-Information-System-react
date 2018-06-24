@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form, FormGroup, Col, ControlLabel, FormControl } from "react-bootstrap";
-import { search } from '../../../actions';
+import { searchUser } from '../../../actions';
 
 class Search extends React.Component {
     constructor(props) {
@@ -16,7 +16,7 @@ class Search extends React.Component {
         event.preventDefault();
     }
     handleChange(event) {
-        this.props.search(event.target.value);
+        this.props.searchUser(event.target.value);
         this.setState({ value: event.target.value });
     }
     render() {
@@ -37,7 +37,7 @@ class Search extends React.Component {
 
 function mapdispatchToProps(dispatch) {
     return ({
-        search: (text) => dispatch(search(text))
+        searchUser: (text) => dispatch(searchUser(text))
     })
 }
 
