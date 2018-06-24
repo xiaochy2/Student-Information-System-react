@@ -10,9 +10,9 @@ const dataList = (state = initialState, action) => {
         case 'SORT':
             switch (action.sortBy) {
                 case "username": return [...state.sort((a, b) => a.username.localeCompare(b.username))];
-                case "math": return [...state.sort((a, b) => a.Math - b.Math)];
-                case "english": return [...state.sort((a, b) => a.English - b.English)];
-                case "physics": return [...state.sort((a, b) => a.Physics - b.Physics)];
+                case "math": return [...state.sort((a, b) => b.Math - a.Math)];
+                case "english": return [...state.sort((a, b) => b.English - a.English)];
+                case "physics": return [...state.sort((a, b) => b.Physics - a.Physics)];
                 default:
                     break;
             }

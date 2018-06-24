@@ -39,7 +39,7 @@ class Create extends React.Component {
                         <Form horizontal onSubmit={this.handleSubmit}>
                             <FormGroup>
                                 <ControlLabel>username</ControlLabel>
-                                <FormControl name="username" type="text" value={this.state.username} onChange={this.handleChange} />                                
+                                <FormControl name="username" type="text" required="required" value={this.state.username} onChange={this.handleChange} />                                
                             </FormGroup>
                             <FormGroup>
                                 <ControlLabel>English</ControlLabel>
